@@ -17,12 +17,16 @@ public class Cliente {
             BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
             PrintWriter out = new PrintWriter(socket.getOutputStream(), true);
 
-            // 3. Enviar un mensaje al servidor
-            out.println("Hola, servidor. Soy el cliente Angel.");
+            //Cifrado antes de enviar
+            String mensajeOriginal = "Hola, servidor. Soy Ángel y este mensaje es TOP SECRET.";
+            System.out.println("Enviando (Texto plano): " + mensajeOriginal);
 
-            // 4. Leer la respuesta del servidor
-            String respuestaServidor = in.readLine();
-            System.out.println("Respuesta del servidor por parte de Emilio " + respuestaServidor);
+            // 3. Ciframos el mensaje usando nuestra clase de utilidad
+            String mensajeCifrado = CifradoAES.cifrar(mensajeOriginal);
+            System.out.println("Enviando (Cifrado): " + mensajeCifrado);
+
+            // 4. Enviamos el mensaje cifrado por el socket
+            out.println(mensajeCifrado);
 
             // 5. Cerrar los recursos
             in.close();
