@@ -22,7 +22,7 @@ public class Cliente {
 
             // 4. Leer la respuesta del servidor
             String respuestaServidor = in.readLine();
-            System.out.println("Respuesta del servidor: " + respuestaServidor);
+            System.out.println("Respuesta del servidor por parte de Emilio " + respuestaServidor);
 
             // 5. Cerrar los recursos
             in.close();
